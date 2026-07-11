@@ -3,7 +3,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent
 GITHUBLEX_URL = "https://github.com/pymlex/githublex.git"
 
 
@@ -35,16 +35,30 @@ def install_system_packages() -> None:
 
 
 def install_dependencies() -> None:
-    run([sys.executable, "-m", "pip", "install", "-r", str(ROOT / "requirements.txt")])
+    venv_dir = ROOT / ".venv"
+    if sys.platform.startswith("win"):
+        venv_python = venv_dir / "Scripts" / "python.exe"
+    else:
+        venv_python = venv_dir / "bin" / "python"
+    if not venv_python.exists():
+        run([sys.executable, "-m", "venv", str(venv_dir)])
+    run([str(venv_python), "-m", "pip", "install", "-U", "pip"])
+    run([str(venv_python), "-m", "pip", "install", "-r", str(ROOT / "requirements.txt")])
     run(
         [
-            sys.executable,
+            str(venv_python),
             "-m",
             "pip",
             "install",
             f"git+{GITHUBLEX_URL}",
         ]
     )
+
+
+def venv_python() -> Path:
+    if sys.platform.startswith("win"):
+        return ROOT / ".venv" / "Scripts" / "python.exe"
+    return ROOT / ".venv" / "bin" / "python"
 
 
 def login_github() -> None:
@@ -67,7 +81,7 @@ def login_huggingface() -> None:
 
 
 def setup_data() -> None:
-    run([sys.executable, str(ROOT / "scripts" / "setup_data.py")])
+    run([str(venv_python()), str(ROOT / "scripts" / "setup_data.py")])
 
 
 def install() -> None:
