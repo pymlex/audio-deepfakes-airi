@@ -8,7 +8,11 @@ from sklearn.model_selection import train_test_split
 
 
 def _is_valid_audio(path: Path) -> bool:
-    return path.is_file() and path.stat().st_size > 4096
+    if not path.is_file() or path.stat().st_size <= 4096:
+        return False
+    with path.open("rb") as handle:
+        header = handle.read(4)
+    return header == b"fLaC"
 
 
 def make_cm_df(
