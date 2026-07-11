@@ -12,6 +12,17 @@ from tqdm.auto import tqdm
 from config import DATA_ROOT, HF_DATASET_REPO, ROOT
 
 
+def cleanup_extract_artifacts() -> None:
+    """Remove macOS metadata folders from extracted archives."""
+    import shutil
+
+    macosx = DATA_ROOT / "__MACOSX"
+    if macosx.exists():
+        shutil.rmtree(macosx)
+    for hidden in DATA_ROOT.rglob("._*"):
+        hidden.unlink(missing_ok=True)
+
+
 def normalize_audio_layout() -> None:
     """Move extracted archives under data/audio to match CSV paths."""
     audio_root = DATA_ROOT / "audio"
@@ -54,6 +65,7 @@ def download_archives() -> None:
     audio_train = DATA_ROOT / "audio" / "flac_T"
     audio_eval = DATA_ROOT / "audio" / "last_eval"
     normalize_metadata_layout()
+    cleanup_extract_artifacts()
     normalize_audio_layout()
     if (
         (metadata_dir / "train.csv").exists()
@@ -76,6 +88,7 @@ def download_archives() -> None:
                     continue
                 zf.extract(member, DATA_ROOT)
     normalize_metadata_layout()
+    cleanup_extract_artifacts()
     normalize_audio_layout()
 
 

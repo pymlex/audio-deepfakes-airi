@@ -7,6 +7,10 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 
 
+def _is_valid_audio(path: Path) -> bool:
+    return path.is_file() and path.stat().st_size > 4096
+
+
 def make_cm_df(
     metadata_dir: Path,
     data_root: Path,
@@ -21,6 +25,9 @@ def make_cm_df(
     df_all["audio_path"] = df_all["audio_path"].apply(
         lambda p: str(data_root / p)
     )
+    df_all = df_all[
+        df_all["audio_path"].apply(lambda p: _is_valid_audio(Path(p)))
+    ].reset_index(drop=True)
     df_train, df_dev = train_test_split(
         df_all,
         test_size=val_fraction,
@@ -35,6 +42,9 @@ def make_cm_df(
     df_eval["audio_path"] = df_eval["audio_path"].apply(
         lambda p: str(data_root / p)
     )
+    df_eval = df_eval[
+        df_eval["audio_path"].apply(lambda p: _is_valid_audio(Path(p)))
+    ].reset_index(drop=True)
     df_train = df_train.reset_index(drop=True)
     df_dev = df_dev.reset_index(drop=True)
     df_eval = df_eval.reset_index(drop=True)
