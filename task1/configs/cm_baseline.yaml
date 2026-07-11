@@ -1,0 +1,17 @@
+lr: 0.0001
+epochs: 5
+batch_size: 32
+num_workers: 8
+subset_size: 4000
+val_fraction: 0.1
+model_name: wav_resnet
+loss_type: ce
+use_augmentation: true
+freeze_backbone: true
+class_weight_alpha: 0.5
+device: cuda
+checkpoint_dir: checkpoints
+output_dir: task1/outputs
+wandb_project: audio-deepfakes-airi-cm
+wandb_run_name: cm_baseline
+seed: 42

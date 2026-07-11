@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project data and secrets
+data/audio/
+data/metadata/__MACOSX/
+data/metadata/metadata/
+checkpoints/*.pt
+.env
+**/.DS_Store
+
+# Keep metrics and plots
+!task1/outputs/
+!task2/outputs/
+!task4/outputs/
+!task5/outputs/
