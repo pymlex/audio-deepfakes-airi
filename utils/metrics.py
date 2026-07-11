@@ -189,11 +189,16 @@ def load_waveform(
     target_sr: int = 16000,
 ) -> tuple[torch.Tensor, int]:
     """Load mono waveform resampled to target sample rate."""
+    import soundfile as sf
     import torchaudio
 
-    waveform, sr = torchaudio.load(path, normalize=True)
+    data, sr = sf.read(path, always_2d=True)
+    waveform = torch.from_numpy(data.T).float()
     if waveform.shape[0] > 1:
         waveform = waveform.mean(dim=0, keepdim=True)
+    peak = waveform.abs().max()
+    if peak > 0:
+        waveform = waveform / peak
     if sr != target_sr:
         waveform = torchaudio.transforms.Resample(sr, target_sr)(waveform)
         sr = target_sr
