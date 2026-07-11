@@ -24,14 +24,9 @@ Predictive entropy $H = -\sum_k p_k \log p_k$.
 
 ## Результаты
 
-Метрики сохранены в `outputs/`:
-- `mc_dropout.json`
-- `deep_ensemble.json`
-- `temperature_scaling_metrics.json`
-- `entropy.json`
-- `all_uncertainty.json`
+MC Dropout mean uncertainty 0.090. Temperature scaling EER 0.541. Deep ensemble disagreement 0.087.
 
-MC Dropout и ensemble позволяют abstain на trials с высокой uncertainty. Temperature scaling улучшает калибровку без изменения ranking.
+Полный JSON: `outputs/all_uncertainty.json`.
 
 ## Abstention
 

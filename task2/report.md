@@ -25,13 +25,19 @@ $$\hat{y} = \sigma(\mathrm{MLP}([\cos(e_{ref}, e_{query}), s_{cm}^{ref}, s_{cm}^
 
 ## Метрики
 
-- SASV-EER на бинарной accept/reject задаче для target vs остальные;
-- a-DCF с priors $P_{target}=0.05$, $P_{spoof}=0.05$;
-- per-class accept/reject rates.
+798 валидных trials из 5840 после фильтрации битых FLAC.
+
+| Метрика | Значение |
+|---------|----------|
+| accuracy | 0.650 |
+| balanced accuracy | 0.634 |
+| EER | 0.398 |
+| ROC-AUC | 0.629 |
+| a-DCF | 0.903 |
+| target accept rate | 0.472 |
+| spoof reject rate | 0.889 |
 
 ![SASV ROC](outputs/sasv_roc.png)
-
-Результаты: `outputs/sasv_metrics.json`, предсказания: `outputs/sasv_predictions.csv`.
 
 ## Fusion vs end-to-end
 

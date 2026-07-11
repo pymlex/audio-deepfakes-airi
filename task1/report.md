@@ -37,15 +37,27 @@ Eval-набор `test_track_1.csv` несбалансирован: 4 057 bona fi
 
 ## 3.1–4.2 Обучение и метрики
 
-Построен pipeline с логированием loss и accuracy по эпохам. Метрики: EER, per-class accuracy, balanced accuracy, F1, precision, recall, ROC-AUC, min t-DCF.
+WavResNet, subset 4000, 5 эпох, RTX 5090. Результаты на eval 20k:
 
-EER — порог $\tau^*$, где $\mathrm{FAR}(\tau^*) = \mathrm{FRR}(\tau^*)$.
+| Метрика | Значение |
+|---------|----------|
+| accuracy | 0.537 |
+| balanced accuracy | 0.457 |
+| EER | 0.539 |
+| ROC-AUC | 0.446 |
+| min t-DCF | 1.012 |
+| spoof accuracy | 0.592 |
+| bona fide accuracy | 0.323 |
+
+На imbalanced eval модель смещена к spoof. Для accuracy $\geq 0.75$ нужен полный train и AASIST-lite.
 
 ![Кривые обучения](outputs/training_curves.png)
 
 ![ROC eval](outputs/roc_eval.png)
 
 ![Confusion matrix](outputs/confusion_eval.png)
+
+![Score distribution](outputs/score_distribution_eval.png)
 
 ## 5.1 SOTA: AASIST-lite
 
