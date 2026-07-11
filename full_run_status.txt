@@ -1,0 +1,31 @@
+LOG:
+          ^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/multiprocessing/connection.py", line 395, in _recv
+    chunk = read(handle, remaining)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+Traceback (most recent call last):
+  File "/root/audio-deepfakes-airi/scripts/run_task1.py", line 54, in <module>
+    main()
+  File "/root/audio-deepfakes-airi/scripts/run_task1.py", line 44, in main
+    run_script(steps[key], ["--config", args.config])
+  File "/root/audio-deepfakes-airi/scripts/run_task1.py", line 15, in run_script
+    subprocess.run(cmd, check=True, cwd=ROOT, env=env)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/root/audio-deepfakes-airi/.venv/bin/python', '/root/audio-deepfakes-airi/task1/4_2_main.py', '--config', '/root/audio-deepfakes-airi/task1/configs/cm_baseline.yaml']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/root/audio-deepfakes-airi/main.py", line 43, in <module>
+    main()
+  File "/root/audio-deepfakes-airi/main.py", line 33, in main
+    run_script("scripts/run_task1.py", ["--step", "all", "--config", args.config])
+  File "/root/audio-deepfakes-airi/main.py", line 15, in run_script
+    subprocess.run(cmd, check=True, cwd=ROOT, env=env)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/root/audio-deepfakes-airi/.venv/bin/python', '/root/audio-deepfakes-airi/scripts/run_task1.py', '--step', 'all', '--config', '/root/audio-deepfakes-airi/task1/configs/cm_baseline.yaml']' returned non-zero exit status 1.
+
+GPU:
+0 %, 15 MiB
+
+PROC:

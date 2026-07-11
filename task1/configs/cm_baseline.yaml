@@ -1,7 +1,7 @@
 lr: 0.0001
 epochs: 5
 batch_size: 32
-num_workers: 8
+num_workers: 0
 subset_size: 4000
 val_fraction: 0.1
 model_name: wav_resnet

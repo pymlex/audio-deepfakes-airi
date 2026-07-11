@@ -1,0 +1,15 @@
+>>> wc -l /root/audio-deepfakes-airi/train.log 2>/dev/null
+
+>>> cat /root/audio-deepfakes-airi/train.log 2>/dev/null
+
+>>> ps aux | grep 4_2_main | grep -v grep
+
+>>> ls -la /root/audio-deepfakes-airi/checkpoints/ 2>/dev/null
+
+>>> ls -la /root/audio-deepfakes-airi/task1/outputs/ 2>/dev/null
+total 4
+drwxr-xr-x 4 root root   40 Jul 11 21:56 .
+drwxr-xr-x 4 root root 4096 Jul 11 21:50 ..
+drwxr-xr-x 2 root root  124 Jul 11 21:50 1_1
+drwxr-xr-x 2 root root    6 Jul 11 21:56 1_2
+

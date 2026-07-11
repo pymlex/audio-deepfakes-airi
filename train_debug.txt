@@ -1,0 +1,51 @@
+train:   0%|          | 0/125 [00:00<?, ?it/s]                                              Traceback (most recent call last):
+  File "/root/audio-deepfakes-airi/task1/4_2_main.py", line 172, in <module>
+    main(args.config)
+  File "/root/audio-deepfakes-airi/task1/4_2_main.py", line 116, in main
+    model, history = train(
+                     ^^^^^^
+  File "/root/audio-deepfakes-airi/utils/training.py", line 119, in train
+    train_loss, train_acc = train_epoch(
+                            ^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/utils/training.py", line 27, in train_epoch
+    for batch_x, batch_y in tqdm(dataloader, desc="train", leave=False):
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/tqdm/std.py", line 1187, in __iter__
+    for obj in iterable:
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 725, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1529, in _next_data
+    return self._process_data(data, worker_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1567, in _process_data
+    data.reraise()
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/_utils.py", line 794, in reraise
+    raise exception
+ImportError: Caught ImportError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torchaudio/_torchcodec.py", line 82, in load_with_torchcodec
+    from torchcodec.decoders import AudioDecoder
+ModuleNotFoundError: No module named 'torchcodec'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py", line 374, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/root/audio-deepfakes-airi/data/dataset.py", line 35, in __getitem__
+    waveform, _ = load_waveform(path, self.default_sr)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/utils/metrics.py", line 192, in load_waveform
+    waveform, sr = torchaudio.load(path, normalize=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torchaudio/__init__.py", line 86, in load
+    return load_with_torchcodec(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torchaudio/_torchcodec.py", line 84, in load_with_torchcodec
+    raise ImportError(
+ImportError: TorchCodec is required for load_with_torchcodec. Please install torchcodec to use this function.
+
