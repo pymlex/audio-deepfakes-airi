@@ -36,6 +36,7 @@ def main() -> None:
     hf_token = os.environ.get("HF_TOKEN", "")
     gh_token = os.environ.get("GITHUB_TOKEN", "")
     setup_cmds = [
+        "apt-get update -qq && apt-get install -y -qq python3.12-venv git-lfs ffmpeg libsndfile1 2>/dev/null || true",
         "git lfs install 2>/dev/null || true",
         "cd /root && rm -rf audio-deepfakes-airi",
         "cd /root && git clone https://github.com/pymlex/audio-deepfakes-airi.git",
@@ -47,10 +48,7 @@ def main() -> None:
         "cd /root/audio-deepfakes-airi && PYTHONPATH=. .venv/bin/python scripts/setup_data.py",
     ]
     run_cmds = [
-        f"cd /root/audio-deepfakes-airi && PYTHONPATH=. .venv/bin/python main.py --task {args.task}",
-        "cd /root/audio-deepfakes-airi && PYTHONPATH=. .venv/bin/python scripts/upload_hf.py",
-        "cd /root/audio-deepfakes-airi && git add -A && git commit -m 'Server run results' || true",
-        "cd /root/audio-deepfakes-airi && git push || true",
+        "cd /root/audio-deepfakes-airi && nohup env PYTHONPATH=. .venv/bin/python main.py --task all > run.log 2>&1 & echo $!",
     ]
     run_remote(args.host, args.port, args.password, setup_cmds + run_cmds)
 

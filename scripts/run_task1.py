@@ -39,7 +39,7 @@ def main() -> None:
     }
     if args.step == "all":
         run_script("scripts/setup_data.py")
-        for key in ["1_1", "1_2", "train", "sota", "tricks", "6_1", "6_2"]:
+        for key in ["1_1", "train", "sota", "6_1", "6_2"]:
             if key == "train":
                 run_script(steps[key], ["--config", args.config])
             else:
