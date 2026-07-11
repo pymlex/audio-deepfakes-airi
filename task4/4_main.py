@@ -219,8 +219,9 @@ def main() -> None:
         {"temperature": float(scaler.temperature.item())},
         out_dir / "temperature_scaling.json",
     )
-    scaled_logits = scaler(logits)
-    scaled_probs = F.softmax(scaled_logits, dim=-1)[:, 1].numpy()
+    with torch.no_grad():
+        scaled_logits = scaler(logits)
+        scaled_probs = F.softmax(scaled_logits, dim=-1)[:, 1].numpy()
     preds = (scaled_probs >= 0.5).astype(int)
     results["temperature_scaling"] = classification_metrics(
         labels.numpy(), preds, scaled_probs

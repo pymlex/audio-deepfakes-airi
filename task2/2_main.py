@@ -87,14 +87,14 @@ def main() -> None:
         SASVTrialDataset(df_train),
         batch_size=args.batch_size,
         shuffle=True,
-        num_workers=8,
+        num_workers=0,
         pin_memory=True,
     )
     eval_loader = DataLoader(
         SASVTrialDataset(df_eval),
         batch_size=args.batch_size,
         shuffle=False,
-        num_workers=8,
+        num_workers=0,
     )
     cm_ckpt = CHECKPOINT_DIR / "wav_resnet_best.pt"
     cm_model = build_cm_model("wav_resnet", classes=2)

@@ -84,7 +84,11 @@ def make_sasv_df(
     df["query_audio_path"] = df["query_audio_path"].apply(
         lambda p: str(data_root / p)
     )
-    return df.reset_index(drop=True)
+    df = df[
+        df["reference_audio_path"].apply(lambda p: _is_valid_audio(Path(p)))
+        & df["query_audio_path"].apply(lambda p: _is_valid_audio(Path(p)))
+    ].reset_index(drop=True)
+    return df
 
 
 def ensure_output_dirs(*paths: Path) -> None:
