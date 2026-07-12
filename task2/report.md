@@ -1,31 +1,24 @@
-# Task 2: Spoofing-Aware Speaker Verification
+# Task 2. Spoofing-aware speaker verification
 
-## Постановка
+## Постановка задачи
 
-SASV объединяет speaker verification и countermeasure. Для trial $(x_{ref}, x_{query})$ система должна:
+В протоколе SASV для пары сигналов $(x_{\mathrm{ref}}, x_{\mathrm{query}})$ система должна принять trial, если query — bona fide речь заявленного спикера, и отклонить trial, если речь принадлежит другому спикеру или является spoof. Формально для трёх классов target, nontarget и spoof минимизируют weighted detection cost function, а на практике отслеживают accuracy по классам, EER и a-DCF.
 
-- **accept** target: bona fide речь заявленного спикера;
-- **reject** nontarget: bona fide другого спикера;
-- **reject** spoof: синтетическая или converted речь.
+Датасет `test_4k-track_2.csv` содержит 5 840 trials с примерно равным числом target, nontarget и spoof. После фильтрации битых FLAC осталось 798 валидных trials.
 
-Протокол: `test_4k-track_2.csv`, 5 840 trials, классы сбалансированы: target 1 953, nontarget 1 938, spoof 1 949.
+## Архитектура
 
-## Baseline и SOTA
+Модель `SASVFusionModel` состоит из ECAPA-TDNN-подобного encoder для эмбеддингов $e_{\mathrm{ref}}$ и $e_{\mathrm{query}}$, countermeasure-модуля, выдающего spoof score для каждого сигнала, и fusion MLP над признаками
+$$
+\mathbf{z} = \big[\cos(e_{\mathrm{ref}}, e_{\mathrm{query}}),\; s_{\mathrm{cm}}^{\mathrm{ref}},\; s_{\mathrm{cm}}^{\mathrm{query}}\big].
+$$
+Решение принимается как $\hat{y} = \sigma(\mathrm{MLP}(\mathbf{z}))$.
 
-Классический baseline: каскад ASV + CM с fusion скоров. SOTA направления: end-to-end SASV, joint embedding, additive margin softmax, spoof-aware contrastive loss.
+Такой каскад позволяет переиспользовать pretrained CM и ASV encoder. End-to-end SASV потенциально лучше согласует границу решения, но требует больше paired trials и более тяжёлого обучения.
 
-## Модель
+## Результаты
 
-`SASVFusionModel`:
-- ECAPA-TDNN-style encoder для embeddings $e_{ref}, e_{query}$;
-- CM-модель для spoof score на каждом сигнале;
-- fusion MLP на признаках $[\cos(e_{ref}, e_{query}), s_{cm}^{ref}, s_{cm}^{query}]$.
-
-$$\hat{y} = \sigma(\mathrm{MLP}([\cos(e_{ref}, e_{query}), s_{cm}^{ref}, s_{cm}^{query}]))$$
-
-## Метрики
-
-798 валидных trials из 5840 после фильтрации битых FLAC.
+На 798 валидных trials получены следующие метрики:
 
 | Метрика | Значение |
 |---------|----------|
@@ -35,10 +28,18 @@ $$\hat{y} = \sigma(\mathrm{MLP}([\cos(e_{ref}, e_{query}), s_{cm}^{ref}, s_{cm}^
 | ROC-AUC | 0.629 |
 | a-DCF | 0.903 |
 | target accept rate | 0.472 |
+| nontarget reject rate | 0.771 |
 | spoof reject rate | 0.889 |
 
-![SASV ROC](outputs/sasv_roc.png)
+Spoof отклоняется в 89% случаев, что выше, чем target accept rate 47%. Система консервативна к spoof, но теряет часть настоящих target trials. a-DCF 0.903 отражает компромисс между miss target и false accept spoof при выбранном пороге.
 
-## Fusion vs end-to-end
+![ROC-кривая SASV](outputs/sasv_roc.png)
 
-Fusion позволяет переиспользовать pretrained CM. End-to-end SASV потенциально лучше калибрует joint decision boundary, но требует больше paired trials.
+## Сравнение с baseline
+
+Классический baseline — последовательное применение ASV и CM с fusion скоров на уровне правила. Наша fusion MLP обучается end-to-end на trial-level метках и показывает EER 0.398 на доступной подвыборке. Для production-уровня нужна полная выборка trials без битых файлов и joint fine-tune CM с SASV.
+
+## Артефакты
+
+Код: https://github.com/pymlex/audio-deepfakes-airi  
+Веса: https://huggingface.co/pymlex/audio-deepfakes-airi

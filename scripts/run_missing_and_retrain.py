@@ -6,7 +6,8 @@ c.connect("n1.us.clorecloud.net", port=1416, username="root", password="YdgQxoX8
 script = """
 set -e
 cd /root/audio-deepfakes-airi
-git pull --ff-only
+git fetch origin
+git reset --hard origin/main
 PYTHONPATH=. .venv/bin/python task1/1_2_audio_samples.py
 PYTHONPATH=. .venv/bin/python task4/4_2_plot.py
 PYTHONPATH=. .venv/bin/python task5/5_2_plot.py

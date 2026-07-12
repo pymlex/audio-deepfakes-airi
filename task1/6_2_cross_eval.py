@@ -40,15 +40,22 @@ def evaluate_split(
     return metrics
 
 
+def resolve_checkpoint() -> tuple[Path, str]:
+    """Pick best available CM checkpoint and matching architecture name."""
+    for name in ("aasist_lite", "wav_resnet"):
+        path = CHECKPOINT_DIR / f"{name}_best.pt"
+        if path.exists():
+            return path, name
+    raise FileNotFoundError("No CM checkpoint in checkpoints/")
+
+
 def main() -> None:
     """Cross-evaluate on available splits."""
     out_dir = TASK1_OUTPUT / "6_2"
     ensure_output_dirs(out_dir)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    ckpt = CHECKPOINT_DIR / "wav_resnet_best.pt"
-    if not ckpt.exists():
-        ckpt = CHECKPOINT_DIR / "aasist_lite_best.pt"
-    model = build_cm_model("wav_resnet", classes=2)
+    ckpt, model_name = resolve_checkpoint()
+    model = build_cm_model(model_name, classes=2)
     model.load_state_dict(torch.load(ckpt, map_location=device, weights_only=True))
     model = model.to(device)
     df_train, df_dev, df_eval = make_cm_df(METADATA_DIR, DATA_ROOT)

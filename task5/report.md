@@ -1,47 +1,58 @@
-# Task 5: Explainability для CM
+# Task 5. Интерпретируемость countermeasure
 
-## Методы
+## Цель
 
-### Saliency maps
+Countermeasure часто рассматривают как чёрный ящик. Интерпретируемость показывает, какие участки сигнала или спектра влияют на spoof score, и на каком уровне представления модель разделяет bona fide и spoof.
 
-$|\partial s / \partial x|$ по waveform. Показывает локально чувствительные отсчёты.
+## Saliency maps
 
-### Integrated Gradients
+Градиент $|\partial s / \partial x|$ по waveform выделяет отсчёты, к которым logits наиболее чувствительны. На примерах spoof saliency концентрируется на переходах и участках с резкими спектральными скачками.
 
-$$\mathrm{IG}_i = (x_i - x'_i) \int_0^1 \frac{\partial s}{\partial x_i}\Big|_{x' + \alpha(x-x')} d\alpha$$
+![Saliency, пример 0](outputs/saliency_0.png)
 
-### Grad-CAM
+## Integrated Gradients
 
-Веса каналов последнего conv слоя по градиентам, heatmap на mel-оси.
+Integrated Gradients усредняет градиенты вдоль пути от baseline к входу:
+$$
+\mathrm{IG}_i = (x_i - x'_i) \int_0^1 \frac{\partial s}{\partial x_i}\Big|_{x' + \alpha(x-x')} \,\mathrm{d}\alpha.
+$$
+Карта IG сглаженнее vanilla saliency и лучше локализует устойчивые артефакты.
 
-### Occlusion sensitivity
+![Integrated Gradients, пример 0](outputs/ig_0.png)
 
-Последовательное зануление окон waveform, $\Delta s = s_{full} - s_{occluded}$.
+## Grad-CAM
 
-### Layer probing
+Grad-CAM взвешивает каналы последнего conv-слоя по градиентам и проецирует heatmap на mel-ось. Видны полосы повышенной активации в высоких частотах у spoof.
 
-Linear probe на features layer1–layer4. Показывает, на каком уровне separability bona fide/spoof максимальна.
+![Grad-CAM, пример 0](outputs/gradcam_0.png)
 
-## Визуализации
+## Occlusion sensitivity
 
-Примеры в `outputs/`:
-- `saliency_*.png`
-- `ig_*.png`
-- `gradcam_*.png`
-- `occlusion_*.png`
-- `layer_probing.json`
+Последовательное зануление окон waveform даёт $\Delta s = s_{\mathrm{full}} - s_{\mathrm{occluded}}$. Окна с наибольшим $\Delta s$ соответствуют участкам, критичным для решения spoof.
 
-## Probing
+![Occlusion, пример 0](outputs/occlusion_0.png)
 
-| Слой | Linear probe accuracy |
-|------|----------------------|
+Дополнительные примеры для индексов 1–7 лежат в `outputs/saliency_*.png`, `ig_*.png`, `gradcam_*.png`, `occlusion_*.png`.
+
+## Layer probing
+
+Linear probe на features слоёв ResNet-encoder показывает рост separability от низких к высоким слоям:
+
+| Слой | Probe accuracy |
+|------|----------------|
 | layer1 | 0.750 |
 | layer2 | 0.875 |
 | layer3 | 0.875 |
 | layer4 | 1.000 |
 
-Separability растёт от layer1 к layer4.
+На layer4 линейный классификатор почти идеально разделяет bona fide и spoof в пространстве признаков, значит основная информация для CM накоплена в глубоких слоях encoder.
 
-## SpeechEval и OOD
+![Layer probing](outputs/layer_probing.png)
 
-Для out-of-domain интерпретации рекомендуется SpeechEval и собственные записи с XTTS-v2 для сравнения attribution maps между benchmark и wild deepfakes.
+## SpeechEval и out-of-domain
+
+Для сравнения attribution maps между benchmark и wild deepfakes имеет смысл прогонять те же методы на записях вне ASVspoof-подобных протоколов, например синтез XTTS-v2. Карты saliency и Grad-CAM на OOD могут смещаться к другим артефактам codec и channel noise.
+
+## Артефакты
+
+Код и визуализации: https://github.com/pymlex/audio-deepfakes-airi
