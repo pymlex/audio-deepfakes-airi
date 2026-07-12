@@ -1,0 +1,49 @@
+>>> nvidia-smi
+Sat Jul 11 22:39:32 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.80                 Driver Version: 595.80         CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        Off |   00000000:81:00.0 Off |                  N/A |
+| 51%   35C    P8             20W /  575W |      15MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+
+>>> ps aux | grep 2_main | grep -v grep
+
+
+>>> tail -20 /root/audio-deepfakes-airi/task2.log
+  File "/root/audio-deepfakes-airi/task2/2_main.py", line 127, in <module>
+    main()
+  File "/root/audio-deepfakes-airi/task2/2_main.py", line 107, in main
+    losses = train_sasv(model, train_loader, optimizer, device, args.epochs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/task2/2_main.py", line 31, in train_sasv
+    for ref, query, label in tqdm(loader, desc=f"sasv epoch {epoch+1}"):
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/tqdm/std.py", line 1187, in __iter__
+    for obj in iterable:
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 725, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1529, in _next_data
+    return self._process_data(data, worker_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1567, in _process_data
+    data.reraise()
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/_utils.py", line 794, in reraise
+    raise exception
+soundfile.LibsndfileError: <exception str() failed>
+
+

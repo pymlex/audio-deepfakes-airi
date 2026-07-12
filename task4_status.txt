@@ -1,0 +1,32 @@
+PID=7189
+DONE
+total 24
+drwxr-xr-x 2 root root  203 Jul 11 22:47 .
+drwxr-xr-x 3 root root   71 Jul 11 22:38 ..
+-rw-r--r-- 1 root root 2254 Jul 11 22:47 all_uncertainty.json
+-rw-r--r-- 1 root root  519 Jul 11 22:47 deep_ensemble.json
+-rw-r--r-- 1 root root  515 Jul 11 22:46 entropy.json
+-rw-r--r-- 1 root root  521 Jul 11 22:46 mc_dropout.json
+-rw-r--r-- 1 root root   39 Jul 11 22:46 temperature_scaling.json
+-rw-r--r-- 1 root root  474 Jul 11 22:46 temperature_scaling_metrics.json
+{'mc_dropout': {'accuracy': 0.5325, 'balanced_accuracy': 0.4499865977057709, 'f1': 0.21494542401343408, 'precision': 0.16473616473616473, 'recall': 0.30917874396135264, 'tn': 937, 'fp': 649, 'fn': 286, 'tp': 128, 'bonafide_accuracy': 0.30917874396135264, 'spoof_accuracy': 0.5907944514501892, 'roc_auc': 0.41875544468203063, 'eer': 0.5555555555557573, 'eer_threshold': 0.44753326089289, 'min_tdcf': 1.119798234552333, 'min_tdcf_threshold': 0.9435480237007141, 'mean_uncertainty': 0.08979186415672302}, 'entropy': {'accuracy': 0.5305, 'balanced_accuracy': 0.4514029765277092, 'f1': 0.21815154038301415, 'precision': 0.16645489199491742, 'recall': 0.3164251207729469, 'tn': 930, 'fp': 656, 'fn': 283, 'tp': 131, 'bonafide_accuracy': 0.3164251207729469, 'spoof_accuracy': 0.5863808322824716, 'roc_auc': 0.429951690821256, 'eer': 0.5573770491795516, 'eer_threshold': 0.44339883327499496, 'min_tdcf': 1.119798234552333, 'min_tdcf_threshold': 0.9739277362823486, 'mean_entropy': 0.6666840314865112}, 'temperature_scaling': {'accuracy': 0.739, 'balanced_accuracy': 0.7392624537933462, 'f1': 0.7423494570582428, 'precision': 0.7244701348747592, 'recall': 0.7611336032388664, 'tn': 363, 'fp': 143, 'fn': 118, 'tp': 376, 'bonafide_accuracy': 0.7611336032388664, 'spoof_accuracy': 0.717391304347826, 'roc_auc': 0.807304251812261, 'eer': 0.25691699604762525, 'eer_threshold': 0.5068331956863275, 'min_tdcf': 0.9210526315789475, 'min_tdcf_threshold': 0.8136366009712219}, 'deep_ensemble': {'accuracy': 0.5375, 'balanced_accuracy': 0.4468918861292347, 'f1': 0.207369323050557, 'precision': 0.16069057104913678, 'recall': 0.2922705314009662, 'tn': 954, 'fp': 632, 'fn': 293, 'tp': 121, 'bonafide_accuracy': 0.2922705314009662, 'spoof_accuracy': 0.6015132408575031, 'roc_auc': 0.4247796236392102, 'eer': 0.5531400966183575, 'eer_threshold': 0.4448986690401455, 'min_tdcf': 1.119798234552333, 'min_tdcf_threshold': 0.9644377827644348, 'mean_disagreement': 0.15559488534927368}}
+Sat Jul 11 22:47:08 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.80                 Driver Version: 595.80         CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        Off |   00000000:81:00.0 Off |                  N/A |
+| 51%   36C    P8             23W /  575W |      15MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+

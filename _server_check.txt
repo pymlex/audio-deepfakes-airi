@@ -1,0 +1,44 @@
+>>> ls /root/audio-deepfakes-airi/task5/outputs/ 2>/dev/null | head -20
+gradcam_0.png
+gradcam_1.png
+gradcam_2.png
+gradcam_3.png
+gradcam_4.png
+gradcam_5.png
+gradcam_6.png
+gradcam_7.png
+ig_0.png
+ig_1.png
+ig_2.png
+ig_3.png
+ig_4.png
+ig_5.png
+ig_6.png
+ig_7.png
+layer_probing.json
+occlusion_0.png
+occlusion_1.png
+occlusion_2.png
+
+>>> ls /root/audio-deepfakes-airi/task1/outputs/1_2/ 2>/dev/null
+
+>>> ls /root/audio-deepfakes-airi/task1/outputs/6_1/ 2>/dev/null
+
+>>> ls /root/audio-deepfakes-airi/task4/outputs/ 2>/dev/null
+all_uncertainty.json
+deep_ensemble.json
+entropy.json
+mc_dropout.json
+temperature_scaling.json
+temperature_scaling_metrics.json
+
+>>> cat /root/audio-deepfakes-airi/checkpoints/*.pt 2>/dev/null | wc -c
+97825489
+
+>>> ls -la /root/audio-deepfakes-airi/checkpoints/
+total 95544
+drwxr-xr-x  2 root root       71 Jul 11 22:41 .
+drwxr-xr-x 14 root root     4096 Jul 11 22:42 ..
+-rw-r--r--  1 root root 52973946 Jul 11 22:41 sasv_fusion_best.pt
+-rw-r--r--  1 root root 44851543 Jul 11 22:24 wav_resnet_best.pt
+

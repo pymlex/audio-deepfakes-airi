@@ -1,0 +1,71 @@
+>>> cat /root/audio-deepfakes-airi/task1/outputs/test_metrics.json
+{
+  "accuracy": 0.5373,
+  "balanced_accuracy": 0.45728671270375326,
+  "f1": 0.2205188679245283,
+  "precision": 0.1674984005118362,
+  "recall": 0.3226522060635938,
+  "tn": 9437,
+  "fp": 6506,
+  "fn": 2748,
+  "tp": 1309,
+  "bonafide_accuracy": 0.3226522060635938,
+  "spoof_accuracy": 0.5919212193439127,
+  "roc_auc": 0.44583499038222363,
+  "eer": 0.5389199021514243,
+  "eer_threshold": 0.4479561746120435,
+  "min_tdcf": 1.0119174559367747,
+  "min_tdcf_threshold": 0.9826576113700867
+}
+
+>>> cat /root/audio-deepfakes-airi/task2/outputs/sasv_metrics.json
+{
+  "threshold": 0.5196531414985657,
+  "target_accept_rate": 0.4722222222222222,
+  "nontarget_reject_rate": 0.7714285714285715,
+  "spoof_reject_rate": 0.8888888888888888,
+  "accuracy": 0.65,
+  "balanced_accuracy": 0.6338383838383839,
+  "a_dcf": 0.9027777777777779,
+  "a_dcf_threshold": 0.5369298458099365,
+  "eer": 0.39772727272720176,
+  "roc_auc": 0.6286300505050505
+}
+
+>>> ls /root/audio-deepfakes-airi/task4/outputs/
+all_uncertainty.json
+deep_ensemble.json
+entropy.json
+mc_dropout.json
+temperature_scaling.json
+temperature_scaling_metrics.json
+
+
+>>> ls /root/audio-deepfakes-airi/checkpoints/
+sasv_fusion_best.pt
+wav_resnet_best.pt
+
+
+>>> nvidia-smi
+Sat Jul 11 22:47:21 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.80                 Driver Version: 595.80         CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        Off |   00000000:81:00.0 Off |                  N/A |
+| 51%   36C    P8             20W /  575W |      15MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+

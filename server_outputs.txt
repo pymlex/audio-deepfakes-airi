@@ -1,0 +1,106 @@
+>>> ls -la /root/audio-deepfakes-airi/task1/outputs/
+total 516
+drwxr-xr-x 4 root root    258 Jul 11 22:27 .
+drwxr-xr-x 4 root root   4096 Jul 11 21:50 ..
+drwxr-xr-x 2 root root    124 Jul 11 21:50 1_1
+drwxr-xr-x 2 root root      6 Jul 11 21:56 1_2
+-rw-r--r-- 1 root root  32309 Jul 11 22:27 confusion_eval.png
+-rw-r--r-- 1 root root  39002 Jul 11 22:27 roc_eval.png
+-rw-r--r-- 1 root root  29087 Jul 11 22:27 score_distribution_eval.png
+-rw-r--r-- 1 root root    482 Jul 11 22:27 test_metrics.json
+-rw-r--r-- 1 root root 330994 Jul 11 22:27 test_predictions.csv
+-rw-r--r-- 1 root root  76898 Jul 11 22:27 training_curves.png
+-rw-r--r-- 1 root root    589 Jul 11 22:27 training_history.json
+
+
+>>> ls -la /root/audio-deepfakes-airi/task2/outputs/ 2>/dev/null
+total 0
+drwxr-xr-x 2 root root 10 Jul 11 22:28 .
+drwxr-xr-x 3 root root 71 Jul 11 22:28 ..
+
+
+>>> ls -la /root/audio-deepfakes-airi/task4/outputs/ 2>/dev/null
+total 12
+drwxr-xr-x 2 root root  97 Jul 11 22:32 .
+drwxr-xr-x 3 root root  71 Jul 11 22:28 ..
+-rw-r--r-- 1 root root 514 Jul 11 22:31 entropy.json
+-rw-r--r-- 1 root root 520 Jul 11 22:31 mc_dropout.json
+-rw-r--r-- 1 root root  39 Jul 11 22:32 temperature_scaling.json
+
+
+>>> ls -la /root/audio-deepfakes-airi/task5/outputs/ 2>/dev/null
+total 892
+drwxr-xr-x 2 root root  4096 Jul 11 22:36 .
+drwxr-xr-x 3 root root    71 Jul 11 22:32 ..
+-rw-r--r-- 1 root root 26520 Jul 11 22:32 gradcam_0.png
+-rw-r--r-- 1 root root 26240 Jul 11 22:33 gradcam_1.png
+-rw-r--r-- 1 root root 26427 Jul 11 22:33 gradcam_2.png
+-rw-r--r-- 1 root root 26340 Jul 11 22:34 gradcam_3.png
+-rw-r--r-- 1 root root 26697 Jul 11 22:34 gradcam_4.png
+-rw-r--r-- 1 root root 26278 Jul 11 22:35 gradcam_5.png
+-rw-r--r-- 1 root root 26109 Jul 11 22:36 gradcam_6.png
+-rw-r--r-- 1 root root 26535 Jul 11 22:36 gradcam_7.png
+-rw-r--r-- 1 root root 16043 Jul 11 22:32 ig_0.png
+-rw-r--r-- 1 root root 17652 Jul 11 22:33 ig_1.png
+-rw-r--r-- 1 root root 13617 Jul 11 22:33 ig_2.png
+-rw-r--r-- 1 root root 17154 Jul 11 22:34 ig_3.png
+-rw-r--r-- 1 root root 13759 Jul 11 22:34 ig_4.png
+-rw-r--r-- 1 root root 13765 Jul 11 22:35 ig_5.png
+-rw-r--r-- 1 root root 18168 Jul 11 22:36 ig_6.png
+-rw-r--r-- 1 root root 14113 Jul 11 22:36 ig_7.png
+-rw-r--r-- 1 root root    75 Jul 11 22:36 layer_probing.json
+-rw-r--r-- 1 root root 25373 Jul 11 22:32 occlusion_0.png
+-rw-r--r-- 1 root root 24214 Jul 11 22:33 occlusion_1.png
+-rw-r--r-- 1 root root 25655 Jul 11 22:33 occlusion_2.png
+-rw-r--r-- 1 root root 21691 Jul 11 22:34 occlusion_3.png
+-rw-r--r-- 1 root root 22522 Jul 11 22:34 occlusion_4.png
+-rw-r--r-- 1 root root 24172 Jul 11 22:35 occlusion_5.png
+-rw-r--r-- 1 root root 22775 Jul 11 22:36 occlusion_6.png
+-rw-r--r-- 1 root root 22691 Jul 11 22:36 occlusion_7.png
+-rw-r--r-- 1 root root 43908 Jul 11 22:32 saliency_0.png
+-rw-r--r-- 1 root root 48801 Jul 11 22:32 saliency_1.png
+-rw-r--r-- 1 root root 39556 Jul 11 22:33 saliency_2.png
+-rw-r--r-- 1 root root 49294 Jul 11 22:33 saliency_3.png
+-rw-r--r-- 1 root root 28644 Jul 11 22:34 saliency_4.png
+-rw-r--r-- 1 root root 31586 Jul 11 22:34 saliency_5.png
+-rw-r--r-- 1 root root 37033 Jul 11 22:35 saliency_6.png
+-rw-r--r-- 1 root root 34237 Jul 11 22:36 saliency_7.png
+
+
+>>> tail -20 /root/audio-deepfakes-airi/task2.log 2>/dev/null
+  File "/root/audio-deepfakes-airi/task2/2_main.py", line 127, in <module>
+    main()
+  File "/root/audio-deepfakes-airi/task2/2_main.py", line 107, in main
+    losses = train_sasv(model, train_loader, optimizer, device, args.epochs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/task2/2_main.py", line 31, in train_sasv
+    for ref, query, label in tqdm(loader, desc=f"sasv epoch {epoch+1}"):
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/tqdm/std.py", line 1187, in __iter__
+    for obj in iterable:
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 725, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1529, in _next_data
+    return self._process_data(data, worker_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1567, in _process_data
+    data.reraise()
+  File "/root/audio-deepfakes-airi/.venv/lib/python3.12/site-packages/torch/_utils.py", line 794, in reraise
+    raise exception
+soundfile.LibsndfileError: <exception str() failed>
+
+
+>>> tail -20 /root/audio-deepfakes-airi/task4.log 2>/dev/null
+Traceback (most recent call last):
+  File "/root/audio-deepfakes-airi/task4/4_main.py", line 247, in <module>
+    main()
+  File "/root/audio-deepfakes-airi/task4/4_main.py", line 223, in main
+    scaled_probs = F.softmax(scaled_logits, dim=-1)[:, 1].numpy()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.
+
+
+>>> tail -20 /root/audio-deepfakes-airi/task5.log 2>/dev/null
+{'layer1': 0.75, 'layer2': 0.875, 'layer3': 0.875, 'layer4': 1.0}
+
+
