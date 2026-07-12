@@ -12,12 +12,12 @@ client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 client.connect(HOST, port=PORT, username=USER, password=PASSWORD, timeout=60)
 sftp = client.open_sftp()
 sftp.put(
-    str(ROOT / "task1" / "6_2_cross_eval.py"),
-    "/root/audio-deepfakes-airi/task1/6_2_cross_eval.py",
+    str(ROOT / "task1" / "6_2" / "cross_eval.py"),
+    "/root/audio-deepfakes-airi/task1/6_2/cross_eval.py",
 )
 sftp.close()
 _, stdout, stderr = client.exec_command(
-    "cd /root/audio-deepfakes-airi && PYTHONPATH=. .venv/bin/python task1/6_2_cross_eval.py && cat task1/outputs/6_2/cross_domain_metrics.json",
+    "cd /root/audio-deepfakes-airi && PYTHONPATH=. .venv/bin/python task1/6_2/cross_eval.py && cat task1/outputs/6_2/cross_domain_metrics.json",
     timeout=600,
 )
 out = stdout.read().decode("utf-8", "replace")

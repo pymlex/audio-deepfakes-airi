@@ -28,14 +28,14 @@ def main() -> None:
     )
     args = parser.parse_args()
     steps = {
-        "1_1": "task1/1_1_distribution.py",
-        "1_2": "task1/1_2_audio_samples.py",
-        "2_2": "task1/2_2_loss_compare.py",
-        "train": "task1/4_2_main.py",
-        "sota": "task1/5_1_sota.py",
-        "tricks": "task1/5_2_tricks.py",
-        "6_1": "task1/6_1_analysis.py",
-        "6_2": "task1/6_2_cross_eval.py",
+        "1_1": "task1/1_1/distribution.py",
+        "1_2": "task1/1_2/audio_samples.py",
+        "2_2": "task1/2_2/loss_compare.py",
+        "train": "task1/4_2/main.py",
+        "sota": "task1/5_1/sota.py",
+        "tricks": "task1/5_2/tricks.py",
+        "6_1": "task1/6_1/analysis.py",
+        "6_2": "task1/6_2/cross_eval.py",
     }
     if args.step == "all":
         run_script("scripts/setup_data.py")

@@ -13,7 +13,7 @@ c.connect(HOST, port=PORT, username="root", password=PASSWORD, timeout=30)
 chain = f"""
 cd {ROOT}
 : > task2.log
-nohup env PYTHONPATH=. .venv/bin/python -u task2/2_main.py > task2.log 2>&1 &
+nohup env PYTHONPATH=. .venv/bin/python -u task2/main.py > task2.log 2>&1 &
 echo PID=$!
 sleep 120
 nvidia-smi

@@ -32,9 +32,9 @@ run(f"tail -5 {ROOT}/train.log")
 
 chain = f"""
 cd {ROOT}
-pkill -f 'task2/2_main.py' 2>/dev/null || true
-pkill -f 'task4/4_main.py' 2>/dev/null || true
-nohup env PYTHONPATH=. .venv/bin/python -u task2/2_main.py > task2.log 2>&1 &
+pkill -f 'task2/main.py' 2>/dev/null || true
+pkill -f 'task4/main.py' 2>/dev/null || true
+nohup env PYTHONPATH=. .venv/bin/python -u task2/main.py > task2.log 2>&1 &
 TASK2=$!
 echo "task2 pid=$TASK2"
 for i in $(seq 1 90); do
@@ -43,7 +43,7 @@ for i in $(seq 1 90); do
 done
 wait $TASK2 2>/dev/null || true
 echo "task2 exit=$?"
-nohup env PYTHONPATH=. .venv/bin/python -u task4/4_main.py > task4_rerun.log 2>&1 &
+nohup env PYTHONPATH=. .venv/bin/python -u task4/main.py > task4_rerun.log 2>&1 &
 TASK4=$!
 echo "task4 pid=$TASK4"
 wait $TASK4 2>/dev/null || true

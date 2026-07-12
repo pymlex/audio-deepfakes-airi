@@ -32,11 +32,11 @@ def main() -> None:
     if args.task in ("all", "1"):
         run_script("scripts/run_task1.py", ["--step", "all", "--config", args.config])
     if args.task in ("all", "2"):
-        run_script("task2/2_main.py")
+        run_script("task2/main.py")
     if args.task in ("all", "4"):
-        run_script("task4/4_main.py")
+        run_script("task4/main.py")
     if args.task in ("all", "5"):
-        run_script("task5/5_main.py")
+        run_script("task5/main.py")
 
 
 if __name__ == "__main__":

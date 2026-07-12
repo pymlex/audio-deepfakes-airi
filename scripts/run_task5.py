@@ -17,4 +17,4 @@ def run_script(relpath: str) -> None:
 
 
 if __name__ == "__main__":
-    run_script("task5/5_main.py")
+    run_script("task5/main.py")

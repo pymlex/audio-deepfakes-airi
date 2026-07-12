@@ -15,4 +15,4 @@ def run_script(relpath: str, args: list[str] | None = None) -> None:
 
 
 if __name__ == "__main__":
-    run_script("task2/2_main.py", sys.argv[1:])
+    run_script("task2/main.py", sys.argv[1:])

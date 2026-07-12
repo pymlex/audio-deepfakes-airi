@@ -7,7 +7,7 @@ cmds = [
     "cd /root/audio-deepfakes-airi && git pull --ff-only",
     "cd /root/audio-deepfakes-airi && PYTHONPATH=. .venv/bin/python scripts/setup_data.py",
     "ls /root/audio-deepfakes-airi/data/audio/flac_T | head -3",
-    "cd /root/audio-deepfakes-airi && nohup env PYTHONPATH=. .venv/bin/python task1/4_2_main.py > train.log 2>&1 &",
+    "cd /root/audio-deepfakes-airi && nohup env PYTHONPATH=. .venv/bin/python task1/4_2/main.py > train.log 2>&1 &",
 ]
 for cmd in cmds:
     _, o, e = c.exec_command(cmd, get_pty=True)

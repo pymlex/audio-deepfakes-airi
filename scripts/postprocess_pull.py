@@ -10,10 +10,10 @@ ROOT = Path(__file__).resolve().parent.parent
 
 POST = """
 cd /root/audio-deepfakes-airi
-PYTHONPATH=. .venv/bin/python task1/6_1_analysis.py
-PYTHONPATH=. .venv/bin/python task1/6_2_cross_eval.py
-PYTHONPATH=. .venv/bin/python task4/4_2_plot.py
-PYTHONPATH=. .venv/bin/python task5/5_2_plot.py
+PYTHONPATH=. .venv/bin/python task1/6_1/analysis.py
+PYTHONPATH=. .venv/bin/python task1/6_2/cross_eval.py
+PYTHONPATH=. .venv/bin/python task4/plot.py
+PYTHONPATH=. .venv/bin/python task5/plot.py
 ls -la task1/outputs/6_1/
 """
 

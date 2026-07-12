@@ -29,26 +29,32 @@ audio-deepfakes-airi/
 │   └── training.py
 ├── task1/
 │   ├── configs/
-│   ├── 1_1_distribution.py
-│   ├── 1_2_audio_samples.py
-│   ├── 2_2_loss_compare.py
-│   ├── 4_2_main.py
-│   ├── 5_1_sota.py
-│   ├── 5_2_tricks.py
-│   ├── 6_1_analysis.py
-│   ├── 6_2_cross_eval.py
+│   ├── 1_1/distribution.py
+│   ├── 1_2/audio_samples.py
+│   ├── 2_1/wav_resnet.py
+│   ├── 2_2/loss_compare.py
+│   ├── 2_3/dataset_smoke.py
+│   ├── 2_4/augmentations_smoke.py
+│   ├── 3_1/train_test_smoke.py
+│   ├── 4_2/main.py
+│   ├── 5_1/sota.py
+│   ├── 5_2/tricks.py
+│   ├── 6_1/analysis.py
+│   ├── 6_2/cross_eval.py
 │   ├── report.md
 │   └── outputs/
 ├── task2/
-│   ├── 2_main.py
+│   ├── main.py
 │   ├── report.md
 │   └── outputs/
 ├── task4/
-│   ├── 4_main.py
+│   ├── main.py
+│   ├── plot.py
 │   ├── report.md
 │   └── outputs/
 ├── task5/
-│   ├── 5_main.py
+│   ├── main.py
+│   ├── plot.py
 │   ├── report.md
 │   └── outputs/
 └── scripts/

@@ -13,8 +13,8 @@ c.connect(HOST, port=PORT, username="root", password=PASSWORD, timeout=30)
 start = f"""
 cd {ROOT}
 git pull
-pkill -f 'task2/2_main.py' 2>/dev/null || true
-nohup env PYTHONPATH=. .venv/bin/python -u task2/2_main.py > task2.log 2>&1 &
+pkill -f 'task2/main.py' 2>/dev/null || true
+nohup env PYTHONPATH=. .venv/bin/python -u task2/main.py > task2.log 2>&1 &
 echo STARTED_PID=$!
 """
 

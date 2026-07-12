@@ -18,7 +18,7 @@ git pull --ff-only
 PYTHONPATH=. .venv/bin/python scripts/setup_data.py
 .venv/bin/python -c "import soundfile as sf; import torch; print('cuda', torch.cuda.is_available()); sf.read('{ROOT}/data/audio/flac_T/T_0000000011.flac'); print('audio_ok')"
 rm -f train.log full_run.log
-nohup env PYTHONPATH=. .venv/bin/python -u task1/4_2_main.py > train.log 2>&1 &
+nohup env PYTHONPATH=. .venv/bin/python -u task1/4_2/main.py > train.log 2>&1 &
 echo TRAIN_PID=$!
 """
 
@@ -30,7 +30,7 @@ for minute in [1, 2, 3]:
     poll = f"""
 tail -15 {ROOT}/train.log
 nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader
-ps aux | grep 4_2_main | grep -v grep
+ps aux | grep 'task1/4_2/main.py' | grep -v grep
 """
     _, o, _ = c.exec_command(poll, timeout=30)
     block = o.read().decode("utf-8", errors="replace")

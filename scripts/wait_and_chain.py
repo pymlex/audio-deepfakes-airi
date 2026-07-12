@@ -27,11 +27,11 @@ for i in range(20):
 
 chain = f"""
 cd {ROOT}
-nohup env PYTHONPATH=. .venv/bin/python -u task2/2_main.py > task2.log 2>&1
+nohup env PYTHONPATH=. .venv/bin/python -u task2/main.py > task2.log 2>&1
 wait
-nohup env PYTHONPATH=. .venv/bin/python -u task4/4_main.py > task4.log 2>&1
+nohup env PYTHONPATH=. .venv/bin/python -u task4/main.py > task4.log 2>&1
 wait
-nohup env PYTHONPATH=. .venv/bin/python -u task5/5_main.py > task5.log 2>&1
+nohup env PYTHONPATH=. .venv/bin/python -u task5/main.py > task5.log 2>&1
 wait
 PYTHONPATH=. .venv/bin/python scripts/upload_hf.py
 """

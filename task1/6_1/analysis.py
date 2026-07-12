@@ -45,7 +45,7 @@ def main() -> None:
     ensure_output_dirs(out_dir)
     pred_path = ROOT / "task1" / "outputs" / "test_predictions.csv"
     if not pred_path.exists():
-        print("Run task1/4_2_main.py first")
+        print("Run task1/4_2/main.py first")
         return
     _, _, df_eval = make_cm_df(METADATA_DIR, DATA_ROOT)
     preds = pd.read_csv(pred_path)
