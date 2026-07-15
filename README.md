@@ -1,7 +1,5 @@
 # Audio Deepfake Countermeasure and Spoofing Analysis
 
-Countermeasure, SASV, uncertainty estimation, and interpretability for audio deepfake detection on ASVspoof-style data.
-
 ## Overview
 
 Binary countermeasure model discriminates bona fide vs spoof speech. SASV extends the setting to target, nontarget, and spoof trials. Uncertainty methods include MC Dropout, deep ensemble, temperature scaling, evidential learning, and entropy. Interpretability covers saliency, Integrated Gradients, Grad-CAM, occlusion, and layer probing.
