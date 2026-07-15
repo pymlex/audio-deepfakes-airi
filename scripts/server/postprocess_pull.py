@@ -10,11 +10,11 @@ ROOT = Path(__file__).resolve().parent.parent
 
 POST = """
 cd /root/audio-deepfakes-airi
-PYTHONPATH=. .venv/bin/python task1/6_1/analysis.py
-PYTHONPATH=. .venv/bin/python task1/6_2/cross_eval.py
+PYTHONPATH=. .venv/bin/python task1/1_6_1/analysis.py
+PYTHONPATH=. .venv/bin/python task1/1_6_2/cross_eval.py
 PYTHONPATH=. .venv/bin/python task4/plot.py
 PYTHONPATH=. .venv/bin/python task5/plot.py
-ls -la task1/outputs/6_1/
+ls -la task1/outputs/1_6_1/
 """
 
 PULL = [
@@ -24,9 +24,9 @@ PULL = [
     "task1/outputs/roc_eval.png",
     "task1/outputs/confusion_eval.png",
     "task1/outputs/score_distribution_eval.png",
-    "task1/outputs/6_1/score_all.png",
-    "task1/outputs/6_1/score_wrong.png",
-    "task1/outputs/6_2/cross_eval.json",
+    "task1/outputs/1_6_1/score_all.png",
+    "task1/outputs/1_6_1/score_wrong.png",
+    "task1/outputs/1_6_2/cross_eval.json",
     "task4/outputs/all_uncertainty.json",
     "task4/outputs/uncertainty_comparison.png",
     "task4/outputs/uncertainty_scores.png",

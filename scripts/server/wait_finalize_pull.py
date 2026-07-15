@@ -17,10 +17,10 @@ PULL_FILES = [
     "task1/outputs/confusion_eval.png",
     "task1/outputs/score_distribution_eval.png",
     "task1/outputs/test_predictions.csv",
-    "task1/outputs/6_1/score_all.png",
-    "task1/outputs/6_1/score_wrong.png",
-    "task1/outputs/6_1/misclassified.csv",
-    "task1/outputs/6_2/cross_eval.json",
+    "task1/outputs/1_6_1/score_all.png",
+    "task1/outputs/1_6_1/score_wrong.png",
+    "task1/outputs/1_6_1/misclassified.csv",
+    "task1/outputs/1_6_2/cross_eval.json",
     "task2/outputs/sasv_metrics.json",
     "task2/outputs/sasv_roc.png",
     "task4/outputs/all_uncertainty.json",
@@ -47,7 +47,7 @@ client.connect(HOST, port=PORT, username=USER, password=PASSWORD, timeout=30)
 for i in range(40):
     out, _ = ssh_cmd(
         client,
-        "pgrep -f 'task1/4_2/main.py --config task1/configs/aasist_train.yaml' || true",
+        "pgrep -f 'task1/1_4_2/main.py --config task1/configs/aasist_train.yaml' || true",
     )
     if not out.strip():
         break
@@ -58,8 +58,8 @@ for i in range(40):
 
 post = """
 cd /root/audio-deepfakes-airi
-PYTHONPATH=. .venv/bin/python task1/6_1/analysis.py
-PYTHONPATH=. .venv/bin/python task1/6_2/cross_eval.py
+PYTHONPATH=. .venv/bin/python task1/1_6_1/analysis.py
+PYTHONPATH=. .venv/bin/python task1/1_6_2/cross_eval.py
 PYTHONPATH=. .venv/bin/python task4/plot.py
 PYTHONPATH=. .venv/bin/python task5/plot.py
 cat task1/outputs/test_metrics.json

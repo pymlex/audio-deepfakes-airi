@@ -103,7 +103,7 @@ def run_trick(name: str, trick_cfg: dict, base_cfg: CMTrainConfig) -> dict:
 
 def main() -> None:
     """Run all trick experiments."""
-    out_dir = TASK1_OUTPUT / "5_2"
+    out_dir = TASK1_OUTPUT / "1_5_2"
     ensure_output_dirs(out_dir)
     config_path = ROOT / "task1" / "configs" / "cm_baseline.yaml"
     with config_path.open("r", encoding="utf-8") as f:

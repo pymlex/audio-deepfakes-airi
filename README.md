@@ -18,41 +18,30 @@ audio-deepfakes-airi/
 ├── schemas.py
 ├── requirements.txt
 ├── .env.example
-├── models/
-│   └── cm_models.py
-├── data/
-│   ├── dataset.py
-│   └── augmentations.py
-├── utils/
-│   ├── metrics.py
-│   ├── data.py
-│   └── training.py
-├── task1/
+├── models/                  # shared CM / SASV architectures
+├── data/                    # dataset loaders and augmentations
+├── utils/                   # metrics, training, plotting helpers
+├── task1/                   # Task 1: binary countermeasure (CM)
 │   ├── configs/
-│   ├── 1_1/distribution.py
-│   ├── 1_2/audio_samples.py
-│   ├── 2_1/wav_resnet.py
-│   ├── 2_2/loss_compare.py
-│   ├── 2_3/dataset_smoke.py
-│   ├── 2_4/augmentations_smoke.py
-│   ├── 3_1/train_test_smoke.py
-│   ├── 4_2/main.py
-│   ├── 5_1/sota.py
-│   ├── 5_2/tricks.py
-│   ├── 6_1/analysis.py
-│   ├── 6_2/cross_eval.py
+│   ├── 1_1/                 # data distribution
+│   ├── 1_2/                 # audio samples
+│   ├── 1_2_1/ … 1_2_4/     # model, loss, dataset, augmentations
+│   ├── 1_3_1/               # train/test smoke
+│   ├── 1_4_2/               # main training pipeline
+│   ├── 1_5_1/ … 1_5_2/     # SOTA and tricks
+│   ├── 1_6_1/ … 1_6_2/     # error analysis and cross-eval
 │   ├── report.md
 │   └── outputs/
-├── task2/
+├── task2/                   # Task 2: SASV
 │   ├── main.py
 │   ├── report.md
 │   └── outputs/
-├── task4/
+├── task4/                   # Task 4: uncertainty estimation
 │   ├── main.py
 │   ├── plot.py
 │   ├── report.md
 │   └── outputs/
-├── task5/
+├── task5/                   # Task 5: explainability
 │   ├── main.py
 │   ├── plot.py
 │   ├── report.md
@@ -60,9 +49,16 @@ audio-deepfakes-airi/
 └── scripts/
     ├── setup_data.py
     ├── run_task1.py
+    ├── run_task2.py
+    ├── run_task4.py
+    ├── run_task5.py
+    ├── publish.py
     ├── upload_hf.py
-    └── publish.py
+    ├── deploy_server.py
+    └── server/              # server-side deploy and pull helpers
 ```
+
+Подпапки в `task1` нумеруются с префиксом `1_`, чтобы не пересекаться с `task2`, `task4` и `task5` в корне репозитория.
 
 ## Pipeline
 

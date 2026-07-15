@@ -70,9 +70,9 @@ AASIST и его упрощённая версия используют graph at
 
 Ошибки концентрируются в области перекрытия скоров bona fide и spoof. False accept чаще встречается у spoof с низким артефактным шумом, false reject — у bona fide с резкими шумами или компрессией, похожими на артефакты vocoder.
 
-![Скоры всех eval-записей](outputs/6_1/score_all.png)
+![Скоры всех eval-записей](outputs/1_6_1/score_all.png)
 
-![Скоры только ошибочных предсказаний](outputs/6_1/score_wrong.png)
+![Скоры только ошибочных предсказаний](outputs/1_6_1/score_wrong.png)
 
 ## 6.2. Cross-domain оценка
 

@@ -19,7 +19,17 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Task 1 CM pipeline")
     parser.add_argument(
         "--step",
-        choices=["all", "1_1", "1_2", "2_2", "train", "sota", "tricks", "6_1", "6_2"],
+        choices=[
+            "all",
+            "1_1",
+            "1_2",
+            "1_2_2",
+            "train",
+            "sota",
+            "tricks",
+            "1_6_1",
+            "1_6_2",
+        ],
         default="all",
     )
     parser.add_argument(
@@ -30,16 +40,16 @@ def main() -> None:
     steps = {
         "1_1": "task1/1_1/distribution.py",
         "1_2": "task1/1_2/audio_samples.py",
-        "2_2": "task1/2_2/loss_compare.py",
-        "train": "task1/4_2/main.py",
-        "sota": "task1/5_1/sota.py",
-        "tricks": "task1/5_2/tricks.py",
-        "6_1": "task1/6_1/analysis.py",
-        "6_2": "task1/6_2/cross_eval.py",
+        "1_2_2": "task1/1_2_2/loss_compare.py",
+        "train": "task1/1_4_2/main.py",
+        "sota": "task1/1_5_1/sota.py",
+        "tricks": "task1/1_5_2/tricks.py",
+        "1_6_1": "task1/1_6_1/analysis.py",
+        "1_6_2": "task1/1_6_2/cross_eval.py",
     }
     if args.step == "all":
         run_script("scripts/setup_data.py")
-        for key in ["1_1", "train", "sota", "6_1", "6_2"]:
+        for key in ["1_1", "train", "sota", "1_6_1", "1_6_2"]:
             if key == "train":
                 run_script(steps[key], ["--config", args.config])
             else:

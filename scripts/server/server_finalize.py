@@ -9,11 +9,11 @@ PASSWORD = "YdgQxoX8gQAz7eAI80"
 FINALIZE = """
 set -e
 cd /root/audio-deepfakes-airi
-while pgrep -f 'task1/4_2/main.py --config task1/configs/aasist_train.yaml' >/dev/null; do
+while pgrep -f 'task1/1_4_2/main.py --config task1/configs/aasist_train.yaml' >/dev/null; do
   sleep 30
 done
-PYTHONPATH=. .venv/bin/python task1/6_1/analysis.py
-PYTHONPATH=. .venv/bin/python task1/6_2/cross_eval.py
+PYTHONPATH=. .venv/bin/python task1/1_6_1/analysis.py
+PYTHONPATH=. .venv/bin/python task1/1_6_2/cross_eval.py
 PYTHONPATH=. .venv/bin/python task4/plot.py
 PYTHONPATH=. .venv/bin/python task5/plot.py
 echo DONE_FINALIZE

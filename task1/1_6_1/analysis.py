@@ -41,11 +41,11 @@ def plot_misclassified_waveforms(
 
 def main() -> None:
     """Analyse wrong predictions."""
-    out_dir = TASK1_OUTPUT / "6_1"
+    out_dir = TASK1_OUTPUT / "1_6_1"
     ensure_output_dirs(out_dir)
     pred_path = ROOT / "task1" / "outputs" / "test_predictions.csv"
     if not pred_path.exists():
-        print("Run task1/4_2/main.py first")
+        print("Run task1/1_4_2/main.py first")
         return
     _, _, df_eval = make_cm_df(METADATA_DIR, DATA_ROOT)
     preds = pd.read_csv(pred_path)

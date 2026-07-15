@@ -12,7 +12,7 @@ def main() -> None:
     subprocess.run(
         [
             sys.executable,
-            str(ROOT / "task1" / "4_2" / "main.py"),
+            str(ROOT / "task1" / "1_4_2" / "main.py"),
             "--config",
             str(config),
         ],
