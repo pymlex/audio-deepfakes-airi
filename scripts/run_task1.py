@@ -23,12 +23,12 @@ def main() -> None:
             "all",
             "1_1",
             "1_2",
-            "1_2_2",
-            "train",
-            "sota",
-            "tricks",
-            "1_6_1",
-            "1_6_2",
+            "2_2",
+            "4_2",
+            "5_1",
+            "5_2",
+            "6_1",
+            "6_2",
         ],
         default="all",
     )
@@ -38,23 +38,23 @@ def main() -> None:
     )
     args = parser.parse_args()
     steps = {
-        "1_1": "task1/1_1/distribution.py",
-        "1_2": "task1/1_2/audio_samples.py",
-        "1_2_2": "task1/1_2_2/loss_compare.py",
-        "train": "task1/1_4_2/main.py",
-        "sota": "task1/1_5_1/sota.py",
-        "tricks": "task1/1_5_2/tricks.py",
-        "1_6_1": "task1/1_6_1/analysis.py",
-        "1_6_2": "task1/1_6_2/cross_eval.py",
+        "1_1": "task1/1_1_distribution.py",
+        "1_2": "task1/1_2_audio_samples.py",
+        "2_2": "task1/2_2_loss_compare.py",
+        "4_2": "task1/4_2_main.py",
+        "5_1": "task1/5_1_sota.py",
+        "5_2": "task1/5_2_tricks.py",
+        "6_1": "task1/6_1_analysis.py",
+        "6_2": "task1/6_2_cross_eval.py",
     }
     if args.step == "all":
         run_script("scripts/setup_data.py")
-        for key in ["1_1", "train", "sota", "1_6_1", "1_6_2"]:
-            if key == "train":
+        for key in ["1_1", "4_2", "5_1", "6_1", "6_2"]:
+            if key == "4_2":
                 run_script(steps[key], ["--config", args.config])
             else:
                 run_script(steps[key])
-    elif args.step == "train":
+    elif args.step == "4_2":
         run_script(steps[args.step], ["--config", args.config])
     else:
         run_script(steps[args.step])

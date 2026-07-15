@@ -8,7 +8,7 @@ cd /root/audio-deepfakes-airi
 git pull --ff-only
 .venv/bin/pip install torchcodec soundfile -q
 PYTHONPATH=. .venv/bin/python scripts/setup_data.py
-nohup env PYTHONPATH=. .venv/bin/python -u task1/1_4_2/main.py > train.log 2>&1 &
+nohup env PYTHONPATH=. .venv/bin/python -u task1/4_2_main.py > train.log 2>&1 &
 echo started
 """
 _, o, _ = c.exec_command(script)

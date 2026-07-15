@@ -51,7 +51,7 @@ def resolve_checkpoint() -> tuple[Path, str]:
 
 def main() -> None:
     """Cross-evaluate on available splits."""
-    out_dir = TASK1_OUTPUT / "1_6_2"
+    out_dir = TASK1_OUTPUT / "6_2"
     ensure_output_dirs(out_dir)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     ckpt, model_name = resolve_checkpoint()

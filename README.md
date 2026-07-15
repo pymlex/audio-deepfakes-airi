@@ -21,13 +21,18 @@ audio-deepfakes-airi/
 ├── utils/                   # metrics, training, plotting helpers
 ├── task1/                   # Task 1: binary countermeasure (CM)
 │   ├── configs/
-│   ├── 1_1/                 # data distribution
-│   ├── 1_2/                 # audio samples
-│   ├── 1_2_1/ … 1_2_4/     # model, loss, dataset, augmentations
-│   ├── 1_3_1/               # train/test smoke
-│   ├── 1_4_2/               # main training pipeline
-│   ├── 1_5_1/ … 1_5_2/     # SOTA and tricks
-│   ├── 1_6_1/ … 1_6_2/     # error analysis and cross-eval
+│   ├── 1_1_distribution.py
+│   ├── 1_2_audio_samples.py
+│   ├── 2_1_wav_resnet.py
+│   ├── 2_2_loss_compare.py
+│   ├── 2_3_dataset_smoke.py
+│   ├── 2_4_augmentations.py
+│   ├── 3_1_train_test.py
+│   ├── 4_2_main.py
+│   ├── 5_1_sota.py
+│   ├── 5_2_tricks.py
+│   ├── 6_1_analysis.py
+│   ├── 6_2_cross_eval.py
 │   ├── report.md
 │   └── outputs/
 ├── task2/                   # Task 2: SASV
@@ -56,7 +61,7 @@ audio-deepfakes-airi/
     └── server/              # server-side deploy and pull helpers
 ```
 
-Task 1 subfolders use the `1_` prefix so section numbers do not collide with `task2`, `task4`, and `task5` at the repository root.
+Numbering inside `task1` follows the assignment notebook sections 1.1–6.2. Top-level folders `task2`, `task4`, and `task5` are separate tasks.
 
 ## Pipeline
 
@@ -118,8 +123,8 @@ python main.py --task 5
 Task 1 only:
 
 ```bash
-python scripts/run_task1.py --step train --config task1/configs/cm_baseline.yaml
-python scripts/run_task1.py --step sota
+python scripts/run_task1.py --step 4_2 --config task1/configs/cm_baseline.yaml
+python scripts/run_task1.py --step 5_1
 ```
 
 ## Models
