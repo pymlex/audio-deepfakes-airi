@@ -58,7 +58,7 @@ audio-deepfakes-airi/
     └── server/              # server-side deploy and pull helpers
 ```
 
-Подпапки в `task1` нумеруются с префиксом `1_`, чтобы не пересекаться с `task2`, `task4` и `task5` в корне репозитория.
+Task 1 subfolders use the `1_` prefix so section numbers do not collide with `task2`, `task4`, and `task5` at the repository root.
 
 ## Pipeline
 
