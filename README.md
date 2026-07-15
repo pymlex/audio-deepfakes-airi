@@ -1,4 +1,4 @@
-# audio-deepfakes-airi
+# Audio Deepfake Countermeasure and Spoofing Analysis
 
 Countermeasure, SASV, uncertainty estimation, and interpretability for audio deepfake detection on ASVspoof-style data.
 
